@@ -1,0 +1,16 @@
+<h1>Import CSV file</h1>
+
+
+<form>
+  <div *ngIf="userInput" class="form-group">
+    <h3>{{ userInput.name }}</h3>
+    <h4>{{ userInput.email }}</h4>
+    <p>{{ userInput.cpf }}</p>
+    <p>{{ userInput.phone }}</p>
+    <p>{{ userInput.address }}</p>
+
+    <button (click)="addToList(userInput)">Add</button>
+    <label for="exampleFormControlFile1">file input</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+</form>

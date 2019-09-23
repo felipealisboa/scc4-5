@@ -1,0 +1,58 @@
+<h1>Register</h1>
+
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+  <h5 *ngIf="success">Your form is valid!</h5>
+  <label>
+    Name:
+    <input type="text" formControlName="name">
+    <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+      <div *ngIf="messageForm.controls.name.errors.required">Your name is required</div>
+    </div>
+  </label>
+  <label>
+    Phone:
+    <input type="text" formControlName="phone">
+    <div *ngIf="submitted && messageForm.controls.phone.errors" class="error">
+      <div *ngIf="messageForm.controls.phone.errors.required">Your phone is required</div>
+    </div>
+  </label>
+  <label>
+    CPF:
+    <input type="text" formControlName="cpf">
+    <div *ngIf="submitted && messageForm.controls.cpf.errors" class="error">
+      <div *ngIf="messageForm.controls.cpf.errors.required">Your CPF is required</div>
+    </div>
+  </label>
+  <label>
+    Address:
+    <textarea formControlName="address"></textarea>
+    <div *ngIf="submitted && messageForm.controls.address.errors" class="error">
+      <div *ngIf="messageForm.controls.address.errors.required">An address is required</div>
+    </div>
+  </label>
+  <label>
+    Email:
+    <textarea formControlName="email"></textarea>
+    <div *ngIf="submitted && messageForm.controls.email.errors" class="error">
+      <div *ngIf="messageForm.controls.email.errors.required">An email is required</div>
+    </div>
+  </label>
+  <button (click) ="onSave($event)">Save</button>
+  <button *ngFor="let user of users" (click)="deleteUser(user)">{{ user.name }}</button>
+  <form #userForm (ngSubmit)="onSubmit(userForm)">Submit</form>
+  <input type="submit" value="Send message" class="cta">
+
+</form>
+
+<div *ngIf="submitted" class=""results>
+  <strong>Name:</strong>
+  <span>{{ messageForm.controls.name.value }}</span>
+  <strong>Phone:</strong>
+  <span>{{ messageForm.controls.phone.value }}</span>
+  <strong>CPF:</strong>
+  <span>{{ messageForm.controls.cpf.value }}</span>
+  <strong>Address:</strong>
+  <span>{{ messageForm.controls.address.value }}</span>
+  <strong>Email:</strong>
+  <span>{{ messageForm.controls.email.value }}</span>
+</div>

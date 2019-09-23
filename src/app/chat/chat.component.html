@@ -1,0 +1,6 @@
+<p>chat works!</p>
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+    <label>Write something:
+      <input #userInput> {{ userInput.value }}
+    </label>
+</form>
